@@ -13,8 +13,8 @@ function headerOffset(): number {
   return (header?.offsetHeight ?? 0) + 12
 }
 
-function easeOutQuint(t: number): number {
-  return 1 - Math.pow(1 - t, 5)
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 }
 
 function setCurrentLink(hash: string) {
@@ -26,6 +26,18 @@ function setCurrentLink(hash: string) {
   })
 }
 
+function pulseLink(hash: string) {
+  if (prefersReducedMotion()) return
+  document.querySelectorAll<HTMLAnchorElement>(NAV_LINK_SELECTOR).forEach((link) => {
+    link.classList.remove('nav-link-pulse')
+    if (link.getAttribute('href') === hash) {
+      void link.offsetWidth
+      link.classList.add('nav-link-pulse')
+      window.setTimeout(() => link.classList.remove('nav-link-pulse'), 560)
+    }
+  })
+}
+
 function showArrival(target: HTMLElement) {
   window.clearTimeout(arrivalTimer)
   activeTarget?.classList.remove('nav-arrival')
@@ -34,25 +46,26 @@ function showArrival(target: HTMLElement) {
   if (prefersReducedMotion()) return
 
   target.classList.remove('nav-arrival')
-  // Reflow lets the same section animate again when revisited.
   void target.offsetWidth
   target.classList.add('nav-arrival')
   arrivalTimer = window.setTimeout(() => {
     target.classList.remove('nav-arrival')
     if (activeTarget === target) activeTarget = null
-  }, 850)
+  }, 1100)
 }
 
 function finishNavigation(target: HTMLElement, hash: string) {
   document.documentElement.classList.remove('nav-is-moving')
   setCurrentLink(hash)
+  pulseLink(hash)
   showArrival(target)
 }
 
 function cancelNavigation() {
-  if (!animationFrame) return
-  window.cancelAnimationFrame(animationFrame)
-  animationFrame = 0
+  if (animationFrame) {
+    window.cancelAnimationFrame(animationFrame)
+    animationFrame = 0
+  }
   document.documentElement.classList.remove('nav-is-moving')
 }
 
@@ -69,13 +82,13 @@ function animateTo(target: HTMLElement, hash: string) {
     return
   }
 
-  const duration = Math.min(1050, Math.max(560, 560 + distance * 0.16))
+  const duration = Math.min(1250, Math.max(720, 720 + distance * 0.12))
   const startedAt = performance.now()
   document.documentElement.classList.add('nav-is-moving')
 
   const step = (now: number) => {
     const progress = Math.min(1, (now - startedAt) / duration)
-    const eased = easeOutQuint(progress)
+    const eased = easeInOutCubic(progress)
     window.scrollTo(0, startY + (targetY - startY) * eased)
 
     if (progress < 1) {
@@ -131,7 +144,6 @@ export function setupNavigationMotion(): () => void {
     event.preventDefault()
     if (window.location.hash !== hash) window.history.pushState(null, '', hash)
 
-    // Allow React to close the mobile navigation before movement starts.
     window.requestAnimationFrame(() => animateTo(target, hash))
   }
 
