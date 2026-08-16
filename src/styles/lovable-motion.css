@@ -3,6 +3,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Disable the previous IntersectionObserver reveal system. It conflicts with
+   the Lovable load animation because both systems animate opacity/transform. */
+.reveal,
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 @keyframes ptf-rise {
   from {
     opacity: 0;
@@ -14,13 +23,15 @@ html {
   }
 }
 
-/* Lovable applies this rise to the hero as the site loads. */
-.hero-copy {
+/* Exact Lovable load treatment: the hero copy rises once on initial render. */
+.hero-copy.reveal,
+.hero-copy.reveal.is-visible {
   animation: ptf-rise 0.6s ease-out both;
 }
 
-/* Keep the companion card visually coherent without changing the motion language. */
-.registration-wrap {
+/* The right-hand trust card follows by a small, deliberate delay. */
+.registration-wrap.reveal,
+.registration-wrap.reveal.is-visible {
   animation: ptf-rise 0.6s ease-out 0.08s both;
 }
 
@@ -29,9 +40,12 @@ html {
     scroll-behavior: auto;
   }
 
-  .hero-copy,
-  .registration-wrap {
-    animation-duration: 0.001ms !important;
-    animation-delay: 0ms !important;
+  .hero-copy.reveal,
+  .hero-copy.reveal.is-visible,
+  .registration-wrap.reveal,
+  .registration-wrap.reveal.is-visible {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
