@@ -1,0 +1,155 @@
+.donation-section {
+  background: var(--green);
+  color: white;
+  scroll-margin-top: 6.4rem;
+}
+
+.donation-shell {
+  text-align: center;
+}
+
+.donation-heading {
+  width: min(100%, 44rem);
+  margin-inline: auto;
+}
+
+.donation-heading h2 {
+  margin-top: 1rem;
+  color: white;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.donation-heading > p:last-child {
+  margin-top: 1rem;
+  color: rgba(255,255,255,.78);
+  font-size: .98rem;
+}
+
+.donation-card {
+  width: min(100%, 36rem);
+  margin: 2.4rem auto 0;
+  padding: 1.8rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,.09);
+  text-align: left;
+  box-shadow: 0 20px 50px rgba(7,31,20,.12);
+}
+
+.donation-card__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  margin-bottom: 1.45rem;
+}
+
+.donation-card__title h3 {
+  color: white;
+  font-size: 1.18rem;
+  letter-spacing: -.02em;
+}
+
+.donation-bank-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--gold);
+}
+
+.donation-details {
+  display: grid;
+  gap: .9rem;
+  margin: 0;
+}
+
+.donation-details > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, .8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.donation-details dt {
+  color: rgba(255,255,255,.68);
+  font-weight: 600;
+}
+
+.donation-details dd {
+  margin: 0;
+  color: white;
+  font-size: .9rem;
+  font-weight: 760;
+  text-align: right;
+}
+
+.donation-details dd:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .7rem;
+}
+
+.donation-account-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .025em;
+}
+
+.copy-account-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  min-height: 2.15rem;
+  padding: .42rem .65rem;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  color: white;
+  font-size: .72rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.copy-account-button:hover {
+  background: rgba(255,255,255,.15);
+  transform: translateY(-1px);
+}
+
+.copy-account-button svg {
+  width: .9rem;
+  height: .9rem;
+}
+
+.copy-status {
+  min-height: 1.2rem;
+  margin-top: .8rem;
+  color: #f1cf83;
+  font-size: .75rem;
+  text-align: center;
+}
+
+.donation-note {
+  width: min(100%, 40rem);
+  margin: 1.2rem auto 0;
+  color: #efbd5b;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+@media (max-width: 620px) {
+  .donation-card {
+    padding: 1.35rem;
+  }
+
+  .donation-details > div {
+    grid-template-columns: 1fr;
+    gap: .25rem;
+  }
+
+  .donation-details dd,
+  .donation-details dd:last-child {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
