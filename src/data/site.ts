@@ -45,6 +45,12 @@ export const site = {
       description: 'To promote sports development and healthy lifestyles among young people.',
     },
   ],
+  donation: {
+    bank: 'Capitec',
+    accountHolder: 'Pamela Teffo Foundation',
+    accountNumber: '2517180926',
+    minimumContribution: 'R10',
+  },
   mapUrl:
     'https://www.google.com/maps/search/?api=1&query=Unit+27+Lake+Mondeor%2C+49+John+Masefield+Drive%2C+Mondeor%2C+Johannesburg%2C+South+Africa',
   siteUrl: import.meta.env.VITE_SITE_URL?.trim() || null,
@@ -56,5 +62,6 @@ export const navigation = [
   { label: 'Our Work', href: '#work' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Get Involved', href: '#get-involved' },
+  { label: 'Donate', href: '#donate' },
   { label: 'Contact', href: '#contact' },
 ] as const
