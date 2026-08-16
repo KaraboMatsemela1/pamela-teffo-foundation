@@ -1,0 +1,39 @@
+/* Typography matched to the current Lovable visual design. */
+:root {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+body,
+button,
+a,
+input,
+textarea,
+select {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.wordmark__text strong,
+.mobile-nav > a {
+  font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.wordmark__text strong {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}

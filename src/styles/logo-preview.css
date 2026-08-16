@@ -1,0 +1,33 @@
+/* Option 2 — Community Circle logo preview.
+   Lightweight vector mark: no external image dependency. */
+.brand-mark,
+.brand-mark--compact {
+  background-color: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cpath%20d%3D%27M14%2049A38%2038%200%200%201%2086%2049%27%20fill%3D%27none%27%20stroke%3D%27%23D8A541%27%20stroke-width%3D%275%27%20stroke-linecap%3D%27round%27%2F%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2725%27%20r%3D%277%27%20fill%3D%27%23C82724%27%2F%3E%3Cpath%20d%3D%27M50%2035C45%2039%2039%2050%2036%2068L50%2083L64%2068C61%2050%2055%2039%2050%2035Z%27%20fill%3D%27%23C82724%27%2F%3E%3Ccircle%20cx%3D%2729%27%20cy%3D%2739%27%20r%3D%276%27%20fill%3D%27%23E2AF27%27%2F%3E%3Cpath%20d%3D%27M29%2048C24%2053%2021%2061%2021%2069L38%2080L43%2067C39%2057%2034%2051%2029%2048Z%27%20fill%3D%27%23E2AF27%27%2F%3E%3Ccircle%20cx%3D%2771%27%20cy%3D%2739%27%20r%3D%276%27%20fill%3D%27%2313743E%27%2F%3E%3Cpath%20d%3D%27M71%2048C66%2051%2061%2057%2057%2067L62%2080L79%2069C79%2061%2076%2053%2071%2048Z%27%20fill%3D%27%2313743E%27%2F%3E%3Cpath%20d%3D%27M12%2065C27%2082%2042%2091%2058%2090C72%2089%2084%2079%2090%2062C82%2069%2074%2073%2066%2075C55%2078%2044%2077%2034%2073C26%2070%2019%2067%2012%2065Z%27%20fill%3D%27%23174C35%27%2F%3E%3Cpath%20d%3D%27M61%2078C70%2075%2078%2069%2086%2059%27%20fill%3D%27none%27%20stroke%3D%27%23FBF8F1%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.92%27%2F%3E%3C%2Fsvg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  border-radius: 0 !important;
+}
+
+.brand-mark__ring,
+.brand-mark__red {
+  display: none !important;
+}
+
+.brand-mark {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.brand-mark--compact {
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+@media (max-width: 760px) {
+  .brand-mark--compact {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
