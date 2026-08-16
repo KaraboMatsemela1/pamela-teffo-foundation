@@ -1,0 +1,37 @@
+/* Motion intentionally mirrors the approved Lovable rebuild. */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes ptf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Lovable applies this rise to the hero as the site loads. */
+.hero-copy {
+  animation: ptf-rise 0.6s ease-out both;
+}
+
+/* Keep the companion card visually coherent without changing the motion language. */
+.registration-wrap {
+  animation: ptf-rise 0.6s ease-out 0.08s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-copy,
+  .registration-wrap {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+  }
+}
