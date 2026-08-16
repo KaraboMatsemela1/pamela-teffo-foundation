@@ -1,10 +1,8 @@
 # Pamela Teffo Foundation
 
-Official website rebuild for the Pamela Teffo Foundation, a South African community foundation based in Mondeor, Johannesburg.
+Production-quality website for the Pamela Teffo Foundation, a South African community foundation based in Mondeor, Johannesburg.
 
 > Never publish unverified impact statistics, testimonials, contact details, partnerships, financial information or organisational claims.
-
-This project deliberately prioritises authenticity, dignity, accessibility and factual integrity. Genuine foundation media is used as the visual source of truth; AI-generated beneficiary imagery is not permitted.
 
 ## Stack
 
@@ -14,21 +12,23 @@ This project deliberately prioritises authenticity, dignity, accessibility and f
 - Tailwind CSS
 - Semantic HTML
 - GitHub Actions
-- Cloudflare Pages-ready deployment
+- Cloudflare Pages
 
 ## Local setup
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Production checks:
+## Commands
 
 ```bash
+npm run dev
 npm run lint
 npm run typecheck
 npm run build
+npm run preview
 ```
 
 ## Project structure
@@ -84,69 +84,77 @@ Example:
 VITE_SITE_URL=https://example.org npm run build
 ```
 
-## Git workflow
-
-Development work should happen on feature branches and be merged through pull requests only after CI passes and the review preview is approved.
-
-Current rebuild branch:
+## Deployment workflow
 
 ```text
-feature/foundation-rebuild
+feature branch
+  ↓
+GitHub PR
+  ↓
+Cloudflare Pages preview
+  ↓
+Foundation owner review
+  ↓
+feedback and updates
+  ↓
+approval
+  ↓
+merge to main
 ```
 
-## Cloudflare Pages
+Cloudflare Pages settings:
 
-The project is prepared for Cloudflare Pages.
+- Framework preset: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
+- Production branch: `main`
+- Preview deployments: enabled
 
-Recommended configuration:
+The repository is intended to remain private while it contains genuine community and learner media. If GitHub Actions cannot run on a private repository because of account billing limits, validate a specific commit while temporarily public only when explicitly approved, then return the repository to private immediately after validation.
 
-```text
-Framework preset: Vite
-Build command: npm run build
-Build output directory: dist
-Production branch: main
+## CI
+
+The workflow in `.github/workflows/ci.yml` validates pull requests and pushes with:
+
+```bash
+npm ci
+npm run lint
+npm run typecheck
+npm run build
 ```
 
-Preview deployments should be enabled for pull requests and feature branches. The production domain must not be attached until the foundation owner approves the review deployment.
+PR #1 commit `1e055342020971852fc37a7737448b03e247df18` was successfully validated with all four checks before the repository was returned to private.
 
 ## Content integrity
 
-The website must never invent or imply:
+Verified foundation data lives in `src/data/site.ts`.
+
+Do not add any of the following without evidence and explicit verification:
 
 - beneficiary counts;
 - donation totals;
-- impact metrics;
-- founding dates;
-- awards;
-- sponsors or partnerships;
-- audited reports;
-- tax status;
+- impact statistics;
+- awards or accreditations;
 - testimonials;
-- bank details;
+- staff/founder biographies;
+- partnerships or sponsors;
+- audited financial claims;
+- tax status;
+- bank/payment details;
 - phone numbers;
 - email addresses;
 - social media accounts;
-- formal programmes not verified by the foundation.
+- formal programme names.
 
-When verified information is unavailable, omit it or keep the relevant data field unset until it is confirmed.
-
-## Current verified identity information
-
-- Pamela Teffo Foundation
-- Tagline: Our pride is our people.
-- Registration number: 2025 / 683667 / 08
-- Unit 27 Lake Mondeor, 49 John Masefield Drive, Mondeor, Johannesburg, South Africa
+Where information is unavailable, omit it or structure the code so it can be added later after verification.
 
 ## Owner review checklist
 
-Before merging the first release, review the Cloudflare Pages preview on both mobile and desktop and confirm:
+Before merging a review build, the foundation owner should confirm:
 
-- all visible people imagery comes from approved genuine foundation media;
-- names, registration number and physical address are correct;
-- no unverified phone, email, banking, social, partnership, testimonial or impact claims are visible;
-- hero crop and mobile image crops are respectful and readable;
-- video content is appropriate for public publication;
-- Get Involved wording accurately reflects how the foundation wants prospective supporters to engage;
-- the site is approved for public release.
-
-Only after the preview is approved should the PR be merged to `main` and a production domain be attached.
+- organisation name, tagline, registration number and address are correct;
+- all visible photographs/videos are approved for website use;
+- descriptions of school/learner support accurately reflect the foundation’s work;
+- no unverified programme, contact, payment, partnership or impact claims appear;
+- mobile and desktop presentation feel appropriate;
+- donation/volunteer/partner messaging is acceptable while formal contact/payment channels are pending.
