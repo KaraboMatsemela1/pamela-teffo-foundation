@@ -80,114 +80,190 @@ function Header({ onGetInvolved }: { onGetInvolved: () => void }) {
       {open && (
         <div className="mobile-panel">
           <div className="shell mobile-panel__top">
-            <WordmašÈÛÛ\XİÏ‚ˆ]ÛˆÛ\ÜÓ˜[YOH›Y[KX]Ûˆˆ\OH˜]ÛˆˆÛÛXÚÏ^Ê
-HOˆÙ]Ü[Š˜[ÙJ_H\šXK[X™[HÛÜÙHY[HXÛÛˆ˜[YOH˜ÛÜÙHˆÏØ]Û‚ˆÙ]‚ˆ˜]ˆÛ\ÜÓ˜[YOHœÚ[[Øš[K[˜]ˆˆ\šXK[X™[H“[Øš[H˜]šYØ][Ûˆ‚ˆÓU‹›X\
+            <Wordmark compact />
+            <button className="menu-button" type="button" onClick={() => setOpen(false)} aria-label="Close menu"><Icon name="close" /></button>
+          </div>
+          <nav className="shell mobile-nav" aria-label="Mobile navigation">
+            {NAV.map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
+            <Button variant="accent" onClick={() => { setOpen(false); onGetInvolved() }}>Get involved</Button>
+          </nav>
+        </div>
+      )}
+    </header>
+  )
+}
 
-][JHOˆHÙ^O^Ú][Kš™YŸH™Y^Ú][Kš™YŸHÛÛXÚÏ^Ê
-HOˆÙ]Ü[Š˜[ÙJ_OÚ][K›X™[OØOŠ_Bˆ]Ûˆ˜\šX[H˜XØÙ[ˆÛÛXÚÏ^Ê
-HOˆÈÙ]Ü[Š˜[ÙJNÈÛ‘Ù][›Û™Y
+function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
+  return <div className="section-heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{intro && <p className="section-intro">{intro}</p>}</div>
+}
 
-H_O‘Ù][›Û™YĞ]Û‚ˆÛ˜]‚ˆÙ]‚ˆ
-_BˆÚXY\‚ˆ
-BŸB‚™[˜İ[ÛˆÙXİ[Û’XY[™ÊÈ^YXœ›İË]K[›ÈNˆÈ^YXœ›İÎˆİš[™ÎÈ]Nˆİš[™ÎÈ[›ÏÎˆİš[™ÈJHÂˆ™]\›ˆ]ˆÛ\ÜÓ˜[YOHœÙXİ[Û‹ZXY[™ÈÛ\ÜÓ˜[YOH™^YXœ›İÈÙ^YXœ›İßOÜİ]_OÚÚ[›È	‰ˆÛ\ÜÓ˜[YOHœÙXİ[Û‹Z[›ÈÚ[›ßOÜŸOÙ]‚ŸB‚™[˜İ[Ûˆ\›ÊÈÛ‘Ù][›Û™YNˆÈÛ‘Ù][›Û™Yˆ
+function Hero({ onGetInvolved }: { onGetInvolved: () => void }) {
+  return (
+    <section id="home" className="hero-section section-border">
+      <div className="shell hero-grid">
+        <div className="hero-copy rise">
+          <p className="eyebrow">Pamela Teffo Foundation Â· South Africa</p>
+          <h1>Practical support. Dignity. Stronger communities.</h1>
+          <p className="hero-intro">We support people and communities through direct outreach and practical assistance. Our most recent documented activity has been school-focused work with learners, captured in photographs from the day itself.</p>
+          <div className="hero-actions">
+            <Button href="#work">See our work <Icon name="arrow" /></Button>
+            <Button variant="outline" onClick={onGetInvolved}>Get involved</Button>
+          </div>
+        </div>
+        <div className="registration-wrap">
+          <span className="orb orb--gold" aria-hidden="true" />
+          <span className="orb orb--red" aria-hidden="true" />
+          <article className="registration-card">
+            <h2>Registered and locally grounded</h2>
+            <dl>
+              <div><Icon name="file" /><span><dt>Registration no.</dt><dd>{REG_NO}</dd></span></div>
+              <div><Icon name="map" /><span><dt>Based in</dt><dd>Mondeor, Johannesburg</dd></span></div>
+            </dl>
+            <p>We would rather show real work than make big claims. Everything published here is either verified or clearly marked as still to come.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  )
+}
 
-HOˆ›ÚYJHÂˆ™]\›ˆ
-ˆÙXİ[ÛˆYHšÛYHˆÛ\ÜÓ˜[YOHš\›Ë\ÙXİ[ÛˆÙXİ[Û‹X›Ü™\ˆ‚ˆ]ˆÛ\ÜÓ˜[YOHœÚ[\›ËYÜšY‚ˆ]ˆÛ\ÜÓ˜[YOHš\›ËXÛÜHš\ÙH‚ˆÛ\ÜÓ˜[YOH™^YXœ›İÈ”[Y[HY™›È›İ[™][Ûˆ0­ÈÛİ]YœšXØOÜ‚ˆO”˜XİXØ[İ\ÜˆYÛš]Kˆİ›Û™Ù\ˆÛÛ[][š]Y\ËÚO‚ˆÛ\ÜÓ˜[YOHš\›ËZ[›È•ÙHİ\Ü[ÜH[™ÛÛ[][š]Y\È›İYÚ\™Xİİ]™XXÚ[™˜XİXØ[\ÜÚ\İ[˜ÙKˆİ\ˆ[Üİ™XÙ[Øİ[Y[YXİ]š]H\È™Y[ˆØÚÛÛY›Øİ\ÙYÛÜšÈÚ]X\›™\œËØ\\™Y[ˆİÙÜ˜\Èœ›ÛHH^H]Ù[‹Ü‚ˆ]ˆÛ\ÜÓ˜[YOHš\›ËXXİ[ÛœÈ‚ˆ]Ûˆ™YHˆİÛÜšÈ”ÙYHİ\ˆÛÜšÈXÛÛˆ˜[YOH˜\œ›İÈˆÏĞ]Û‚ˆ]Ûˆ˜\šX[H›İ][™HˆÛÛXÚÏ^ÛÛ‘Ù][›Û™YO‘Ù][›Û™YĞ]Û‚ˆÙ]‚ˆÙ]‚ˆ]ˆÛ\ÜÓ˜[YOHœ™YÚ\İ˜][Û‹]Ü˜\‚ˆÜ[ˆÛ\ÜÓ˜[YOH›Ü˜ˆÜ˜‹KYÛÛˆ\šXKZY[HYHˆÏ‚ˆÜ[ˆÛ\ÜÓ˜[YOH›Ü˜ˆÜ˜‹K\™Yˆ\šXKZY[HYHˆÏ‚ˆ\XÛHÛ\ÜÓ˜[YOHœ™YÚ\İ˜][Û‹XØ\™‚ˆ”™YÚ\İ\™Y[™ØØ[HÜ›İ[™YÚ‚ˆ‚ˆ]XÛÛˆ˜[YOH™š[HˆÏÜ[”™YÚ\İ˜][Ûˆ›ËÙÔ‘Q×Ó“ßOÙÜÜ[Ù]‚ˆ]XÛÛˆ˜[YOH›X\ˆÏÜ[˜\ÙY[Ù“[Û™[Ü‹›Ú[›™\Ø\™ÏÙÜÜ[Ù]‚ˆÙ‚ˆ•ÙHÛİ[˜]\ˆÚİÈ™X[ÛÜšÈ[ˆXZÙHšYÈÛZ[\Ëˆ]™\][™ÈX›\ÚY\™H\ÈZ]\ˆ™\šYšYYÜˆÛX\›HX\šÙY\Èİ[ÈÛÛYKÜ‚ˆØ\XÛO‚ˆÙ]‚ˆÙ]‚ˆÜÙXİ[Û‚ˆ
-BŸB‚˜ÛÛœİ’SÒTTÈHÂˆÉÌIË	Ó\İ[‰Ë	ÕÙHİ\Ú]H[ÜHÛÜÙ\İÈH™YY‰×KˆÉÌ‰Ë	ÔÚİÈ\	Ë	ÕÙHÛÈÈHÛÛ[][š]K[ˆ\œÛÛ‹ÛˆH^K‰×KˆÉÌÉË	Ôİ\Ü	Ë	ÕÙHÚ]™H˜XİXØ[[]Ø[ˆ™H\ÙY[[YYX][K‰×KˆÉÌ	Ë	Ñ›ÛİÈ›İYÚ	Ë	ÕÙHİ^H[ˆÛÛXİY\ˆH[™İ™\‹‰×K—B‚™[˜İ[ÛˆX›İ]
+const PRINCIPLES = [
+  ['01', 'Listen', 'We start with the people closest to the need.'],
+  ['02', 'Show up', 'We go to the community, in person, on the day.'],
+  ['03', 'Support', 'We give practical help that can be used immediately.'],
+  ['04', 'Follow through', 'We stay in contact after the handover.'],
+]
 
-HÂˆ™]\›ˆ
-ˆÙXİ[ÛˆYH˜X›İ]ˆÛ\ÜÓ˜[YOH˜X›İ]\ÙXİ[ÛˆÙXİ[Û‹X›Ü™\ˆ‚ˆ]ˆÛ\ÜÓ˜[YOHœÚ[ÙXİ[Û‹\Y‚ˆ]ˆÛ\ÜÓ˜[YOHÛËXÛÛ[[ˆ‚ˆÙXİ[Û’XY[™È^YXœ›İÏHX›İ]\Èˆ]OH“İ\ˆšYH\Èİ\ˆ[ÜKˆˆÏ‚ˆ]ˆÛ\ÜÓ˜[YOH˜›ÙKXÛÜH•H[Y[HY™›È›İ[™][Ûˆ\ÈHÛÛ[][š]KY›Øİ\ÙYÛİ]YœšXØ[ˆ›İ[™][Û‹ˆİ\ˆÛÜšÈ\ÈÚ[\H[ˆÚ\NˆY[YHH™X[™YYÛÜÙHÈÛYK[™YY]]Ú]˜XİXØ[[]›İXİÈ[ÜIÜÈYÛš]KÜ•ÙH\™HØØ[HÜ›İ[™Y˜]\ˆ[ˆ˜][Û˜[HÜ™XY[™ÙHÛİ[˜]\ˆÈHÛX[\ˆ[[İ[ÙˆÛ™\İš\ÚX›HÛÜšÈ[ˆ›ÛZ\ÙH[Ü™H[ˆÙHØ[ˆ[]™\‹ˆ\ÈH›İ[™][ÛˆÜ›İÜËİ\ˆ™\Ü[™ÈÛˆ\ÈÚ]HÚ[Ü›İÈÚ]]ÜÙ]‚ˆÙ]‚ˆ]ˆÛ\ÜÓ˜[YOHœš[˜Ú\\ÈÏ’İÈÙHÛÜšÏÚÏÛÔ’SÒTTË›X\
+function About() {
+  return (
+    <section id="about" className="about-section section-border">
+      <div className="shell section-pad">
+        <div className="two-column">
+          <SectionHeading eyebrow="About us" title="Our pride is our people." />
+          <div className="body-copy"><p>The Pamela Teffo Foundation is a community-focused South African foundation. Our work is simple in shape: identify a real need close to home, and meet it with practical help that protects people's dignity.</p><p>We are locally grounded rather than nationally spread, and we would rather do a smaller amount of honest, visible work than promise more than we can deliver. As the foundation grows, our reporting on this site will grow with it.</p></div>
+        </div>
+        <div className="principles"><h3>How we work</h3><ol>{PRINCIPLES.map(([step,title,body]) => <li key={step}><span>{step}</span><h4>{title}</h4><p>{body}</p></li>)}</ol></div>
+      </div>
+    </section>
+  )
+}
 
-Üİ\]K›ÙWJHOˆHÙ^O^Üİ\OÜ[Üİ\OÜÜ[İ]_OÚØ›Ù_OÜÛOŠ_OÛÛÙ]‚ˆÙ]‚ˆÜÙXİ[Û‚ˆ
-BŸB‚˜ÛÛœİÓÔ’ÈHÂˆÉÔØÚÛÛİ\Ü	Ë	ÔØÚÛÛÚÙ\ËÛİ[™È[™[šY›Ü›K\™[]Yİ\Ü[™YÈX\›™\œÈ\š[™ÈØÚÛÛX˜\ÙYİ]™XXÚØİ[Y[Y[ˆİ\ˆİÛˆYYXK‰×KˆÉĞÛÛ[][š]Hİ]™XXÚ	Ë	Ñ\™XİÛ‹]KYÜ›İ[™İ\ÜÚ\™HH™YY\È™Y[ˆY[YšYYHHÛÛ[][š]H]Ù[‹‰×KˆÉÑYÛš]H	ˆ\ÜÙ[X[ÉË	Ô˜XİXØ[][\È][[ÜHZÙH\[ˆØÚÛÛ[™ÛÛ[][š]HY™HÚ]İ][X˜\œ˜\ÜÛY[‰×K—B‚™[˜İ[Ûˆİ\•ÛÜšÊ
-HÂˆ™]\›ˆ
-ˆÙXİ[ÛˆYHÛÜšÈˆÛ\ÜÓ˜[YOHœÙXİ[Û‹X›Ü™\ˆ]ˆÛ\ÜÓ˜[YOHœÚ[ÙXİ[Û‹\YÙXİ[Û’XY[™È^YXœ›İÏH“İ\ˆÛÜšÈˆ]OH•Ú]ÙHXİX[HÈˆ[›ÏH•\ÙH\™HH\™X\Èİ\ˆØİ[Y[YXİ]š]HÛİ™\œËˆÙHÚ[Û›HY™]È›ÙÜ˜[[Y\È\™HÛ˜ÙH\™H\È™X[ÛÜšÈ™Z[™[KˆˆÏ[Û\ÜÓ˜[YOHÛÜšËYÜšYÕÓÔ’Ë›X\
+const WORK = [
+  ['School support', 'School shoes, clothing and uniform-related support handed to learners during school-based outreach, documented in our own media.'],
+  ['Community outreach', 'Direct, on-the-ground support where a need has been identified by the community itself.'],
+  ['Dignity & essentials', 'Practical items that help people take part in school and community life without embarrassment.'],
+]
 
-İ]K›ÙWKJHOˆHÙ^O^İ]_OÜ[ˆÛ\ÜÓ˜[YO^ØÛÜšË\[HÛÜšË\[KKIÚH
-È_XHÏÏİ]_OÚÏØ›Ù_OÜÛOŠ_Oİ[Û\ÜÓ˜[YOH˜ÛÛZ[™Ë\ÛÛÛˆ”›ÙÜ˜[[YHØÚY[\È[™]\™Hİ]™XXÚ]\Îˆ]Z[ÈÛÛZ[™ÈÛÛÛ‹ÜÙ]ÜÙXİ[Û‚ˆ
-BŸB‚˜ÛÛœİĞST–HHÂˆÈÜ˜Îˆ	ËÛYYXKÙØ[\KXÛ\ÜÜ›ÛÛKLËÙXœ	Ë[ˆ	ÓX\›™\œÈ[™Y[ÈÙÙ]\ˆ[ˆHÛ\ÜÜ›ÛÛH\š[™È›İ[™][ÛˆXİ]š]IËØ\[Ûˆ	ÔØÚÛÛİ]™XXÚØİ[Y[Y›İYÚ›İ[™][ÛˆİÙÜ˜\K‰ÈKˆÈÜ˜Îˆ	ËÛYYXKÚ\›ËXÛÛ[][š]KÙXœ	Ë[ˆ	ÓX\›™\œÈ[™Y[ÈÙÙ]\ˆ[ˆHÛ\ÜÜ›ÛÛH\š[™ÈH›İ[™][ÛˆØÚÛÛš\Ú]	ËØ\[Ûˆ	ĞHÜ›İ\İÙÜ˜\œ›ÛHHØÚÛÛš\Ú]‰ÈKˆÈÜ˜Îˆ	ËÛYYXKÙØ[\KXÛ\ÜÜ›ÛÛKL‹ÙXœ	Ë[ˆ	ÓX\›™\œÈ[™Y[ÈØ]\™Y[ˆHÛ\ÜÜ›ÛÛHÚ]ÚÙ\Èš\ÚX›H™X\˜IËØ\[Ûˆ	ÑØİ[Y[\HİÙÜ˜\Hœ›ÛHHİ\YYİ]™XXÚX]\šX[‰ÈKˆÈÜ˜Îˆ	ËÛYYXKÙØ[\KXÛ\ÜÜ›ÛÛKMÙXœ	Ë[ˆ	ÓX\›™\œÈ[™Y[ÈØ]\™Y›ÜˆHÚY\ˆÛ\ÜÜ›ÛÛHÜ›İ\İÙÜ˜\	ËØ\[Ûˆ	ĞHÚY\ˆšY]Èœ›ÛHHØ[YHØÚÛÛİ]™XXÚ‰ÈKˆÈÜ˜Îˆ	ËÛYYXKÙØ[\KXÛ\ÜÜ›ÛÛKMKÙXœ	Ë[ˆ	ÓX\›™\œÈ[™Y[Èİ[™[™ÈÙÙ]\ˆ\š[™ÈHØÚÛÛİ]™XXÚ	ËØ\[Ûˆ	Ğ[›İ\ˆİ\YYİÙÜ˜\œ›ÛHHØÚÛÛš\Ú]‰ÈKˆÈÜ˜Îˆ	ËÛYYXKÙ›İ[™][Û‹Xœ˜[™[™ËÙXœ	Ë[ˆ	Ô[Y[HY™›È›İ[™][Ûˆœ˜[™[™È\ÛÜšÈİ\YYHHÜ™Ø[š\Ø][Û‰ËØ\[Ûˆ	Ñ›İ[™][Ûˆœ˜[™[™È\ÛÜšÈİ\YYÚ]HÜšYÚ[˜[YYXK‰ÈK—B‚™[˜İ[ÛˆØ[\J
-HÂˆÛÛœİØXİ]™KÙ]Xİ]™WHH\ÙTİ]O[X™\ˆ[Š[
-BˆÛÛœİ˜Z[™YˆH\ÙT™YS]‘[[Y[Š[
-B‚ˆÛÛœİØÜ›ÛØ[\HH
-\™Xİ[Ûˆ	Ü™]š[İ\ÉÈ	Û™^	ÊHOˆÂˆÛÛœİ˜Z[H˜Z[™Y‹˜İ\œ™[ˆYˆ
-\˜Z[
-H™]\›‚ˆÛÛœİØ\™H˜Z[œ]Y\TÙ[XİÜS[[Y[Š	Ë™Ø[\KXØ\™	ÊBˆÛÛœİ[[İ[HØ\™ÈØ\™›Ù™œÙ]ÚY
-ÈŒˆ˜Z[˜ÛY[ÚY
-ˆˆ˜Z[œØÜ›ÛJÈYˆ\™Xİ[ÛˆOOH	Û™^	ÈÈ[[İ[ˆX[[İ[™Z]š[Üˆ	ÜÛ[Ûİ	ÈJBˆB‚ˆÛÛœİÚİÔ™]š[İ\ÈH
+function OurWork() {
+  return (
+    <section id="work" className="section-border"><div className="shell section-pad"><SectionHeading eyebrow="Our work" title="What we actually do" intro="These are the areas our documented activity covers. We will only add new programmes here once there is real work behind them." /><ul className="work-grid">{WORK.map(([title, body], i) => <li key={title}><span className={`work-rule work-rule--${i + 1}`} /><h3>{title}</h3><p>{body}</p></li>)}</ul><p className="coming-soon">Programme schedules and future outreach dates: details coming soon.</p></div></section>
+  )
+}
 
-HOˆÙ]Xİ]™J
-İ\œ™[
-HOˆİ\œ™[OOH[È[ˆ
-İ\œ™[HH
-ÈĞST–K›[™İ
-H	HĞST–K›[™İ
-BˆÛÛœİÚİÓ™^H
+const GALLERY = [
+  { src: '/media/gallery-classroom-3.webp', alt: 'Learners and adults together in a classroom during foundation activity', caption: 'School outreach documented through foundation photography.' },
+  { src: '/media/hero-community.webp', alt: 'Learners and adults together in a classroom during a foundation school visit', caption: 'A group photograph from the school visit.' },
+  { src: '/media/gallery-classroom-2.webp', alt: 'Learners and adults gathered in a classroom with shoes visible nearby', caption: 'Documentary photography from the supplied outreach material.' },
+  { src: '/media/gallery-classroom-4.webp', alt: 'Learners and adults gathered for a wider classroom group photograph', caption: 'A wider view from the same school outreach.' },
+  { src: '/media/gallery-classroom-5.webp', alt: 'Learners and adults standing together during the school outreach', caption: 'Another supplied photograph from the school visit.' },
+  { src: '/media/foundation-branding.webp', alt: 'Pamela Teffo Foundation branding artwork supplied by the organisation', caption: 'Foundation branding artwork supplied with the original media.' },
+]
 
-HOˆÙ]Xİ]™J
-İ\œ™[
-HOˆİ\œ™[OOH[È[ˆ
-İ\œ™[
-ÈJH	HĞST–K›[™İ
-B‚ˆ\ÙQY™™Xİ
+function Gallery() {
+  const [active, setActive] = useState<number | null>(null)
+  const railRef = useRef<HTMLDivElement>(null)
 
+  const scrollGallery = (direction: 'previous' | 'next') => {
+    const rail = railRef.current
+    if (!rail) return
+    const card = rail.querySelector<HTMLElement>('.gallery-card')
+    const amount = card ? card.offsetWidth + 20 : rail.clientWidth * 0.8
+    rail.scrollBy({ left: direction === 'next' ? amount : -amount, behavior: 'smooth' })
+  }
 
-HOˆÂˆYˆ
-Xİ]™HOOH[
-H™]\›‚ˆÛÛœİÛ’Ù^QİÛˆH
-]™[ˆÙ^X›Ø\™]™[
-HOˆÂˆYˆ
-]™[šÙ^HOOH	Ñ\ØØ\IÊHÙ]Xİ]™J[
-BˆYˆ
-]™[šÙ^HOOH	Ğ\œ›İÓY	ÊHÚİÔ™]š[İ\Ê
-BˆYˆ
-]™[šÙ^HOOH	Ğ\œ›İÔšYÚ	ÊHÚİÓ™^
+  const showPrevious = () => setActive((current) => current === null ? null : (current - 1 + GALLERY.length) % GALLERY.length)
+  const showNext = () => setActive((current) => current === null ? null : (current + 1) % GALLERY.length)
 
-BˆBˆÚ[™İË˜Y]™[\İ[™\Š	ÚÙ^YİÛ‰ËÛ’Ù^QİÛŠBˆ™]\›ˆ
+  useEffect(() => {
+    if (active === null) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActive(null)
+      if (event.key === 'ArrowLeft') {
+        setActive((current) => current === null ? null : (current - 1 + GALLERY.length) % GALLERY.length)
+      }
+      if (event.key === 'ArrowRight') {
+        setActive((current) => current === null ? null : (current + 1) % GALLERY.length)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [active])
 
-HOˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	ÚÙ^YİÛ‰ËÛ’Ù^QİÛŠBˆKØXİ]™WJB‚ˆ™]\›ˆ
-ˆÙXİ[ÛˆYH™Ø[\HˆÛ\ÜÓ˜[YOH™Ø[\K\ÙXİ[ÛˆÙXİ[Û‹X›Ü™\ˆ‚ˆ]ˆÛ\ÜÓ˜[YOHœÚ[ÙXİ[Û‹\Y‚ˆÙXİ[Û’XY[™Âˆ^YXœ›İÏH‘œ›ÛHHÛÛ[][š]H‚ˆ]OH“İ\ˆÛÜšÈ[ˆHÛÛ[][š]H‚ˆ[›ÏH[ÙˆHİÙÜ˜\Èİ\YYHH›İ[™][Ûˆ\™HÛÛXİY\™Kˆ›İ[™È[ˆ\ÈØ[\H\ÈİØÚÈÜˆRKYÙ[™\˜]Y[XYÙ\Kˆ‚ˆÏ‚ˆ]ˆÛ\ÜÓ˜[YOH™Ø[\K]ÛÛ˜\ˆ‚ˆ”İÚ\HÛˆ[Øš[KØÜ›ÛÜš^›Û[KÜˆ\ÙHH\œ›İÜÈÈšY]ÈH[Ø[\KÜ‚ˆ]ˆÛ\ÜÓ˜[YOH™Ø[\KXÛÛ›ÛÈˆ\šXK[X™[H‘Ø[\HÛÛ›ÛÈ‚ˆ]Ûˆ\OH˜]ÛˆˆÛÛXÚÏ^Ê
-HOˆØÜ›ÛØ[\J	Ü™]š[İ\ÉÊ_H\šXK[X™[H”™]š[İ\ÈØ[\H[XYÙ\È¸¡¤Ø]Û‚ˆ]Ûˆ\OH˜]ÛˆˆÛÛXÚÏ^Ê
-HOˆØÜ›ÛØ[\J	Û™^	Ê_H\šXK[X™[H“™^Ø[\H[XYÙ\È¸¡¤Ø]Û‚ˆÙ]‚ˆÙ]‚ˆ]ˆÛ\ÜÓ˜[YOH™Ø[\K\˜Z[ˆ™Y^Ü˜Z[™YŸHX’[™^^ÌH\šXK[X™[H‘›İ[™][Ûˆ[XYÙHØ[\H‚ˆÑĞST–K›X\
+  return (
+    <section id="gallery" className="gallery-section section-border">
+      <div className="shell section-pad">
+        <SectionHeading
+          eyebrow="From the community"
+          title="Our work in the community"
+          intro="All of the photographs supplied by the foundation are collected here. Nothing in this gallery is stock or AI-generated imagery."
+        />
+        <div className="gallery-toolbar">
+          <p>Swipe on mobile, scroll horizontally, or use the arrows to view the full gallery.</p>
+          <div className="gallery-controls" aria-label="Gallery controls">
+            <button type="button" onClick={() => scrollGallery('previous')} aria-label="Previous gallery images">â†</button>
+            <button type="button" onClick={() => scrollGallery('next')} aria-label="Next gallery images">â†’</button>
+          </div>
+        </div>
+        <div className="gallery-rail" ref={railRef} tabIndex={0} aria-label="Foundation image gallery">
+          {GALLERY.map((image, index) => (
+            <figure className={`gallery-card${image.src.includes('foundation-branding') ? ' gallery-card--branding' : ''}`} key={image.src}>
+              <button type="button" onClick={() => setActive(index)} aria-label={`Open ${image.alt}`}>
+                <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+                <span>View image</span>
+              </button>
+              <figcaption>{image.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+      {active !== null && (
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" onClick={() => setActive(null)}>
+          <div className="lightbox__inner" onClick={(event) => event.stopPropagation()}>
+            <button className="lightbox__close" type="button" onClick={() => setActive(null)} aria-label="Close image viewer">Ã—</button>
+            <button className="lightbox__nav lightbox__nav--prev" type="button" onClick={showPrevious} aria-label="Previous image">â€¹</button>
+            <img src={GALLERY[active].src} alt={GALLERY[active].alt} />
+            <button className="lightbox__nav lightbox__nav--next" type="button" onClick={showNext} aria-label="Next image">â€º</button>
+            <div className="lightbox__caption">
+              <p>{GALLERY[active].caption}</p>
+              <span>{active + 1} / {GALLERY.length}</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}
 
-[XYÙK[™^
-HOˆ
-ˆšYİ\™HÛ\ÜÓ˜[YO^ØØ[\KXØ\™	Ú[XYÙKœÜ˜Ëš[˜ÛY\Ê	Ù›İ[™][Û‹Xœ˜[™[™ÉÊHÈ	ÈØ[\KXØ\™KXœ˜[™[™ÉÈˆ	ÉßXHÙ^O^Ú[XYÙKœÜ˜ßO‚ˆ]Ûˆ\OH˜]ÛˆˆÛÛXÚÏ^Ê
-HOˆÙ]Xİ]™J[™^
-_H\šXK[X™[^ØÜ[ˆ	Ú[XYÙK˜[XO‚ˆ[YÈÜ˜Ï^Ú[XYÙKœÜ˜ßH[^Ú[XYÙK˜[HØY[™ÏH›^HˆXÛÙ[™ÏH˜\Ş[˜ÈˆÏ‚ˆÜ[•šY]È[XYÙOÜÜ[‚ˆØ]Û‚ˆšYØØ\[ÛÚ[XYÙK˜Ø\[ÛŸOÙšYØØ\[Û‚ˆÙšYİ\™O‚ˆ
-J_BˆÙ]‚ˆÙ]‚ˆØXİ]™HOOH[	‰ˆ
-ˆ]ˆÛ\ÜÓ˜[YOH›YÚ›Şˆ›ÛOH™X[ÙÈˆ\šXK[[Ù[HYHˆ\šXK[X™[H‘Ø[\H[XYÙHšY]Ù\ˆˆÛÛXÚÏ^Ê
-HOˆÙ]Xİ]™J[
-_O‚ˆ]ˆÛ\ÜÓ˜[YOH›YÚ›Ş×Ú[›™\ˆˆÛÛXÚÏ^Ê]™[
-HOˆ]™[œİÜ›ÜYØ][ÛŠ
-_O‚ˆ]ÛˆÛ\ÜÓ˜[YOH›YÚ›Ş×ØÛÜÙHˆ\OH˜]ÛˆˆÛÛXÚÏ^Ê
-HOˆÙ]Xİ]™J[
-_H\šXK[X™[HÛÜÙH[XYÙHšY]Ù\ˆ°åÏØ]Û‚ˆ]ÛˆÛ\ÜÓ˜[YOH›YÚ›Ş×Û˜]ˆYÚ›Ş×Û˜]‹K\™]ˆˆ\OH˜]ÛˆˆÛÛXÚÏ^ÜÚİÔ™]š[İ\ßH\šXK[X™[H”™]š[İ\È[XYÙH¸ .OØ]Û‚ˆ[YÈÜ˜Ï^ÑĞST–VØXİ]™WKœÜ˜ßH[^ÑĞST–VØXİ]™WK˜[HÏ‚ˆ]ÛˆÛ\ÜÓ˜[YOH›YÚ›Ş×Û˜]ˆYÚ›Ş×Û˜]‹K[™^ˆ\OH˜]ÛˆˆÛÛXÚÏ^ÜÚİÓ™^H\šXK[X™[H“™^[XYÙH¸ .Ø]Û‚ˆ]ˆÛ\ÜÓ˜[YOH›YÚ›Ş×ØØ\[Ûˆ‚ˆÑĞST–VØXİ]™WK˜Ø\[ÛŸOÜ‚ˆÜ[ØXİ]™H
-È_HÈÑĞST–K›[™İOÜÜ[‚ˆÙ]‚ˆÙ]‚ˆÙ]‚ˆ
-_BˆÜÙXİ[Û‚ˆ
-BŸB‚™[˜İ[ÛˆÙ][›Û™Y
-ÈÛ“Ü[ˆNˆÈÛ“Ü[ˆ
-ÜXÎˆİš[™ÊHOˆ›ÚYJHÂˆÛÛœİÜ[ÛœÈHÖÉÑÛ˜]IË	ÑÚ]™HİØ\™ÈH™^İ]™XXÚ‰×KÉÕ›Û[Y\‰Ë	ÓÙ™™\ˆ[İ\ˆ[YHÛˆH^K‰×KÉÔ\™\ˆÚ]\ÉË	Ğœš[™È[İ\ˆÜ™Ø[š\Ø][Ûˆ[Û™ÜÚYHİ\œË‰×WBˆ™]\›ˆÙXİ[ÛˆYH™Ù]Z[›Û™YˆÛ\ÜÓ˜[YOHš[›Û™Y\ÙXİ[ÛˆÙXİ[Û‹X›Ü™\ˆ]ˆÛ\ÜÓ˜[YOHœÚ[ÙXİ[Û‹\Y]ˆÛ\ÜÓ˜[YOHš[›Û™YZXY[™ÈÛ\ÜÓ˜[YOH™^YXœ›İÈ^YXœ›İËKYÛÛ‘Ù][›Û™YÜ”İ\ÜHÛÜšÏÚ’Yˆ[İHÛİ[ZÙHÈÛÛšX]K[™H[™ÜˆÛÜšÈÚ]\Ë™XXÚİ][™ÙHÚ[ÛÛYH˜XÚÈÈ[İH\™XİKÜÙ][Û\ÜÓ˜[YOHš[›Û™YYÜšYÛÜ[ÛœË›X\
+function GetInvolved({ onOpen }: { onOpen: (topic: string) => void }) {
+  const options = [['Donate','Give towards the next outreach.'],['Volunteer','Offer your time on the day.'],['Partner with us','Bring your organisation alongside ours.']]
+  return <section id="get-involved" className="involved-section section-border"><div className="shell section-pad"><div className="involved-heading"><p className="eyebrow eyebrow--gold">Get involved</p><h2>Support the work</h2><p>If you would like to contribute, lend a hand or work with us, reach out and we will come back to you directly.</p></div><ul className="involved-grid">{options.map(([label, body]) => <li key={label}><h3>{label}</h3><p>{body}</p><button type="button" onClick={() => onOpen(label)}>{label} <Icon name="arrow" /></button></li>)}</ul></div></section>
+}
 
-ÛX™[›ÙWJHOˆHÙ^O^ÛX™[OÏÛX™[OÚÏØ›Ù_OÜ]Ûˆ\OH˜]ÛˆˆÛÛXÚÏ^Ê
-HOˆÛ“Ü[ŠX™[
-_OÛX™[HXÛÛˆ˜[YOH˜\œ›İÈˆÏØ]ÛÛOŠ_Oİ[Ù]ÜÙXİ[Û‚ŸB‚™[˜İ[ÛˆÛÛXİ
+function Contact() {
+  const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${ADDRESS}, Johannesburg, South Africa`)}`
+  return <section id="contact"><div className="shell section-pad"><div className="two-column contact-grid"><SectionHeading eyebrow="Contact" title="Where to find us" intro="Our registered details are below. Contact channels are being set up and will be published here as soon as they are confirmed." /><div className="contact-card"><dl><div><Icon name="map" /><span><dt>Address</dt><dd>{ADDRESS}</dd></span></div><div><Icon name="file" /><span><dt>Registration no.</dt><dd>{REG_NO}</dd></span></div><div><Icon name="mail" className="icon--muted" /><span><dt>Email</dt><dd>Email details coming soon</dd></span></div><div><Icon name="phone" className="icon--muted" /><span><dt>Phone</dt><dd>Phone details coming soon</dd></span></div></dl><a className="map-link" href={mapHref} target="_blank" rel="noreferrer noopener">Open address in maps <Icon name="arrow" /></a></div></div></div></section>
+}
 
-HÂˆÛÛœİX\™YˆHÎ‹ËİİİË™ÛÛÙÛK˜ÛÛKÛX\ËÜÙX\˜ÚÏØ\OLIœ]Y\OIÙ[˜ÛÙUT’PÛÛ\Û™[
-	ĞQ‘TÔßK›Ú[›™\Ø\™ËÛİ]YœšXØX
-_Xˆ™]\›ˆÙXİ[ÛˆYH˜ÛÛXİ]ˆÛ\ÜÓ˜[YOHœÚ[ÙXİ[Û‹\Y]ˆÛ\ÜÓ˜[YOHÛËXÛÛ[[ˆÛÛXİYÜšYÙXİ[Û’XY[™È^YXœ›İÏHÛÛXİˆ]OH•Ú\™HÈš[™\Èˆ[›ÏH“İ\ˆ™YÚ\İ\™Y]Z[È\™H™[İËˆÛÛXİÚ[›™[È\™H™Z[™ÈÙ]\[™Ú[™HX›\ÚY\™H\ÈÛÛÛˆ\È^H\™HÛÛ™š\›YYˆˆÏ]ˆÛ\ÜÓ˜[YOH˜ÛÛXİXØ\™]XÛÛˆ˜[YOH›X\ˆÏÜ[Y™\ÜÏÙĞQ‘TÔßOÙÜÜ[Ù]]XÛÛˆ˜[YOH™š[HˆÏÜ[”™YÚ\İ˜][Ûˆ›ËÙÔ‘Q×Ó“ßOÙÜÜ[Ù]]XÛÛˆ˜[YOH›XZ[ˆÛ\ÜÓ˜[YOHšXÛÛ‹K[]]YˆÏÜ[‘[XZ[Ù‘[XZ[]Z[ÈÛÛZ[™ÈÛÛÛÙÜÜ[Ù]]XÛÛˆ˜[YOHœÛ™HˆÛ\ÜÓ˜[YOHšXÛÛ‹K[]]YˆÏÜ[”Û™OÙ”Û™H]Z[ÈÛÛZ[™ÈÛÛÛÙÜÜ[Ù]ÙHÛ\ÜÓ˜[YOH›X\[[šÈˆ™Y^ÛX\™YŸH\™Ù]H—Ø›[šÈˆ™[H››Ü™Y™\œ™\ˆ›ÛÜ[™\ˆ“Ü[ˆY™\ÜÈ[ˆX\ÈXÛÛˆ˜[YOH˜\œ›İÈˆÏØOÙ]Ù]Ù]ÜÙXİ[Û‚ŸB‚™[˜İ[Ûˆ›Ûİ\Š
-HÂˆ™]\›ˆ›Ûİ\ˆÛ\ÜÓ˜[YOH™›Ûİ\ˆ]ˆÛ\ÜÓ˜[YOHœÚ[›Ûİ\‹Z[›™\ˆ]ÛÜ™X\šÈÏ”™YÚ\İ˜][Ûˆ›ËˆÔ‘Q×Ó“ßOÜĞQ‘TÔßOÜÙ]˜]ˆ\šXK[X™[H‘›Ûİ\ˆ˜]šYØ][ÛˆÓU‹›X\
-][HOˆHÙ^O^Ú][Kš™YŸH™Y^Ú][Kš™YŸOÚ][K›X™[OØOŠ_OÛ˜]Ù]]ˆÛ\ÜÓ˜[YOHœÚ[ÛÜ\šYÚ°ªHÛ™]È]J
-K™Ù][YX\Š
-_H[Y[HY™›È›İ[™][Û‹ˆ[šYÚÈ™\Ù\™YÙ]Ù›Ûİ\‚ŸB‚™[˜İ[Ûˆ[Ù[
-ÈÜXËÛÛÜÙHNˆÈÜXÎˆİš[™È[ÈÛÛÜÙNˆ
+function Footer() {
+  return <footer className="footer"><div className="shell footer-inner"><div><Wordmark /><p>Registration no. {REG_NO}</p><p>{ADDRESS}</p></div><nav aria-label="Footer navigation">{NAV.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav></div><div className="shell copyright">Â© {new Date().getFullYear()} Pamela Teffo Foundation. All rights reserved.</div></footer>
+}
 
-HOˆ›ÚYJHÂˆYˆ
-]ÜXÊH™]\›ˆ[ˆ™]\›ˆ]ˆÛ\ÜÓ˜[YOH›[Ù[ˆ›ÛOH™X[ÙÈˆ\šXK[[Ù[HYHˆ\šXK[X™[YOH›[Ù[]]HˆÛÛXÚÏ^ÛÛÛÜÙ_O]ˆÛ\ÜÓ˜[YOH›[Ù[×ØØ\™ˆÛÛXÚÏ^ÊJHOˆKœİÜ›ÜYØ][ÛŠ
-_O]ÛˆÛ\ÜÓ˜[YOH›[Ù[×ØÛÜÙHˆ\OH˜]ÛˆˆÛÛXÚÏ^ÛÛÛÜÙ_H\šXK[X™[HÛÜÙH°åÏØ]ÛˆYH›[Ù[]]HİÜXßOÚ‘Û˜][Ûˆ[™^[Y[]Z[È\™Hİ[™Z[™Èš[˜[\ÙYÛÈÙH\™H›İÛÛXİ[™È^[Y[ÈÛˆ\ÈÚ]HY]Ü]ˆÛ\ÜÓ˜[YOH›[Ù[×ØY™\ÜÈĞQ‘TÔßOœ‹ÏÜ[”™YÚ\İ˜][Ûˆ›ËˆÔ‘Q×Ó“ßOÜÜ[Ù]‘[XZ[[™Û™H]Z[ÈÚ[™HX›\ÚY[ˆHÛÛXİÙXİ[ÛˆÛ˜ÙHÛÛ™š\›YYÜÙ]Ù]‚ŸB‚™^ÜY˜][[˜İ[Ûˆ\
+function Modal({ topic, onClose }: { topic: string | null; onClose: () => void }) {
+  if (!topic) return null
+  return <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={onClose}><div className="modal__card" onClick={(e) => e.stopPropagation()}><button className="modal__close" type="button" onClick={onClose} aria-label="Close">Ã—</button><h2 id="modal-title">{topic}</h2><p>Donation and payment details are still being finalised, so we are not collecting payments on this site yet.</p><div className="modal__address">{ADDRESS}<br/><span>Registration no. {REG_NO}</span></div><p>Email and phone details will be published in the Contact section once confirmed.</p></div></div>
+}
 
-HÂˆÛÛœİİÜXËÙ]ÜX×HH\ÙTİ]Oİš[™È[Š[
-Bˆ™]\›ˆHÛ\ÜÓ˜[YOHœÚÚ\[[šÈˆ™YHˆÚÛYH”ÚÚ\ÈÛÛ[ØOXY\ˆÛ‘Ù][›Û™Y^Ê
-HOˆÙ]ÜXÊ	ÑÙ][›Û™Y	Ê_HÏXZ[\›ÈÛ‘Ù][›Û™Y^Ê
-HOˆÙ]ÜXÊ	ÑÙ][›Û™Y	Ê_HÏX›İ]Ïİ\•ÛÜšÈÏØ[\HÏÙ][›Û™YÛ“Ü[^ÜÙ]ÜXßHÏÛÛXİÏÛXZ[›Ûİ\ˆÏ[Ù[ÜXÏ^İÜXßHÛÛÜÙO^Ê
-HOˆÙ]ÜXÊ[
-_HÏÏ‚ŸB
+export default function App() {
+  const [topic, setTopic] = useState<string | null>(null)
+  return <><a className="skip-link" href="#home">Skip to content</a><Header onGetInvolved={() => setTopic('Get involved')} /><main><Hero onGetInvolved={() => setTopic('Get involved')} /><About /><OurWork /><Gallery /><GetInvolved onOpen={setTopic} /><Contact /></main><Footer /><Modal topic={topic} onClose={() => setTopic(null)} /></>
+}
