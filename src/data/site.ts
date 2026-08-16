@@ -1,7 +1,7 @@
 export const site = {
   name: 'Pamela Teffo Foundation',
   tagline: 'Our pride is our people.',
-  organisationType: 'South African non-profit organisation',
+  organisationType: 'Registered South African non-profit organisation',
   registrationNumber: '2025 / 683667 / 08',
   address: {
     line1: 'Unit 27 Lake Mondeor',
@@ -16,6 +16,7 @@ export const site = {
   },
   email: 'info@pamelatefffoundation.org.za',
   facebookName: 'Pamela TEFFO Foundation',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=61587660965151',
   profileSummary:
     'Pamela Teffo Foundation is a South African non-profit organisation committed to building a better society by uplifting the lives of vulnerable individuals and communities.',
   about:
@@ -32,7 +33,7 @@ export const site = {
       description: 'To help learners attend school with dignity and confidence.',
     },
     {
-      title: 'Old clothes',
+      title: 'Clean wearable clothing',
       description: 'Clean and wearable clothing for children and families in need.',
     },
     {
