@@ -123,7 +123,7 @@ npm run typecheck
 npm run build
 ```
 
-PR #1 commit `1e055342020971852fc37a7737448b03e247df18` was successfully validated with all four checks before the repository was returned to private.
+PR #1 application code was successfully validated with all four checks before the repository was returned to private. Subsequent documentation-only changes do not alter the production bundle and should be validated by the Cloudflare preview build before merge.
 
 ## Content integrity
 
