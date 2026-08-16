@@ -7,12 +7,12 @@ Review the Cloudflare Pages deployment before PR #1 is merged.
 - Confirm the foundation name and tagline are correct.
 - Confirm the registration number `2025 / 683667 / 08` is correct.
 - Confirm the address is correct.
-- Confirm the site may describe the organisation as a registered South African non-profit organisation.
+- Confirm the site may describe the organisation as a registered South African non-profit organisation, as stated in the supplied foundation profile.
 - Confirm the vision and mission wording matches the supplied foundation profile.
 
 ## Contact details
 
-Confirm the contact details exactly as supplied in the profile:
+Confirm the contact details exactly as printed in the supplied profile:
 
 - Phone: `+27 68 366 708`
 - Email: `info@pamelatefffoundation.org.za`
