@@ -8,8 +8,9 @@ import './styles/gallery-carousel.css'
 import './styles/polish.css'
 import './styles/profile-content.css'
 import './styles/logo-preview.css'
-import './styles/lovable-motion.css'
 import './styles/donation.css'
+import './styles/responsive-polish.css'
+import './styles/motion-system.css'
 
 applyRuntimeSeo()
 
