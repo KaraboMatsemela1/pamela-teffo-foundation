@@ -1,5 +1,5 @@
 const SECTION_SELECTOR = 'section[id]'
-const NAV_LINK_SELECTOR = 'a[href^="#"]'
+const NAV_LINK_SELECTOR = 'a[href^="#"]:not(.skip-link)'
 
 let animationFrame = 0
 let arrivalTimer = 0
