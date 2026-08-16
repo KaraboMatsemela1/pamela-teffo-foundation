@@ -1,47 +1,44 @@
-# Foundation owner review checklist
+# Pamela Teffo Foundation — Owner Review Checklist
 
-Use the Cloudflare Pages preview to review version 1 before merging to `main`.
+Review the Cloudflare Pages deployment before PR #1 is merged.
 
-## Credibility and content
+## Identity and content
 
-- Confirm the foundation name, tagline, registration number and physical address are correct.
-- Confirm every visible photograph/video is approved for public website use.
-- Confirm the descriptions of school outreach and learner support accurately reflect the foundation's work.
-- Flag any wording that overstates, understates or misrepresents the foundation.
+- Confirm the foundation name and tagline are correct.
+- Confirm the registration number `2025 / 683667 / 08` is correct.
+- Confirm the address is correct.
+- Confirm the site may describe the organisation as a registered South African non-profit organisation.
+- Confirm the vision and mission wording matches the supplied foundation profile.
 
-## Information still required before publishing it
+## Contact details
 
-Do not add these until the foundation verifies them:
+Confirm the contact details exactly as supplied in the profile:
 
-- official phone number;
-- official email address;
-- social media URLs;
-- donation/payment instructions;
-- tax/PBO/NPO status or related claims;
-- founder/team biographies and names;
-- formal programme names;
-- partners/sponsors;
-- impact statistics or beneficiary numbers;
-- testimonials;
-- financial or annual reports.
+- Phone: `+27 68 366 708`
+- Email: `info@pamelatefffoundation.org.za`
+- Facebook name: `Pamela TEFFO Foundation`
 
-## Visual review
+If any character or digit is incorrect, provide the corrected official detail before production launch.
 
-Check at minimum on a phone and desktop:
+## Current needs
 
-- hero photograph crop and text readability;
-- navigation and mobile menu;
-- gallery images and lightbox;
-- outreach video playback;
-- Get Involved status messaging;
-- map link and address;
-- footer information.
+Confirm these are still appropriate to publish as current needs:
 
-## Approval
+1. School shoes — to help learners attend school with dignity and confidence.
+2. Old clothes — clean and wearable clothing for children and families in need.
+3. Canned food — non-perishable food items to support vulnerable households.
+4. Basketballs — to promote sports development and healthy lifestyles among young people.
 
-Only merge the rebuild PR after:
+## Media and experience
 
-1. the foundation owner has approved the preview;
-2. CI is green;
-3. any requested corrections are committed;
-4. no unverified claims have been introduced.
+- Confirm all five gallery photographs are genuine foundation media and acceptable to publish.
+- Test horizontal gallery arrows on desktop and swipe/scroll on mobile.
+- Test the image lightbox, mobile menu, Get Involved modal, phone link, email link and map link.
+- Confirm animations feel subtle and professional.
+- Confirm the site remains usable with reduced-motion preferences.
+
+## Publication guardrails
+
+- Do not add bank/payment details unless separately verified.
+- Do not add impact statistics, testimonials, partners or sponsors unless separately verified.
+- Do not merge PR #1 or attach the production custom domain until the owner approves this review deployment.
