@@ -6,6 +6,7 @@ import './styles/index.css'
 import './styles/gallery-carousel.css'
 import './styles/polish.css'
 import './styles/profile-content.css'
+import './styles/logo-preview.css'
 
 applyRuntimeSeo()
 
