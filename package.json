@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/remove-gallery-branding.mjs",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
@@ -11,7 +12,7 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prebuild": "node scripts/generate-sitemap.mjs"
+    "prebuild": "node scripts/remove-gallery-branding.mjs && node scripts/generate-sitemap.mjs"
   },
   "dependencies": {
     "react": "18.3.1",
