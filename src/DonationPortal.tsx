@@ -124,7 +124,7 @@ export default function DonationPortal() {
         <div className="donation-dialog__heading">
           <p className="eyebrow">Support the foundation</p>
           <h2 id="donation-dialog-title">Ways to donate</h2>
-          <p>Choose the option that works best for you. Every contribution helps the foundation respond to practical community needs.</p>
+          <p>Choose the option that works best for you. Contact the foundation if you need help arranging a contribution.</p>
         </div>
 
         <div className="donation-options">
