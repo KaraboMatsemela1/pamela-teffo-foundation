@@ -119,9 +119,13 @@ html.is-section-navigating .reveal:not(.is-visible) {
 
   .navigation-target,
   .interactive-card:hover,
+  .pill:hover,
   .pill:active,
   .involved-grid button:active,
-  .map-link:active {
+  .map-link:active,
+  .gallery-controls button:hover:not(:disabled),
+  .gallery-card > button:hover img,
+  .lightbox__nav:active {
     animation: none !important;
     transform: none !important;
   }
