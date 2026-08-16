@@ -25,7 +25,7 @@ If any character or digit is incorrect, provide the corrected official detail be
 Confirm these are still appropriate to publish as current needs:
 
 1. School shoes — to help learners attend school with dignity and confidence.
-2. Old clothes — clean and wearable clothing for children and families in need.
+2. Clean wearable clothing — clean and wearable clothing for children and families in need.
 3. Canned food — non-perishable food items to support vulnerable households.
 4. Basketballs — to promote sports development and healthy lifestyles among young people.
 
@@ -37,8 +37,18 @@ Confirm these are still appropriate to publish as current needs:
 - Confirm animations feel subtle and professional.
 - Confirm the site remains usable with reduced-motion preferences.
 
+## Donation and payment details
+
+Confirm the review build's bank-transfer details against the foundation owner's official banking records before production launch:
+
+- Bank: `Capitec`
+- Account holder: `Pamela Teffo Foundation`
+- Account number: `2517180926`
+- Contributions from `R10` are shown as welcome.
+
+Do not publish any additional account type, branch code, payment instructions, tax-deductibility statement or other financial claim unless separately verified.
+
 ## Publication guardrails
 
-- Do not add bank/payment details unless separately verified.
 - Do not add impact statistics, testimonials, partners or sponsors unless separately verified.
 - Do not merge PR #1 or attach the production custom domain until the owner approves this review deployment.
