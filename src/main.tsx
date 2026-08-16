@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import { applyRuntimeSeo } from './lib/seo'
 import './styles/index.css'
+import './styles/gallery-carousel.css'
 
 applyRuntimeSeo()
 
