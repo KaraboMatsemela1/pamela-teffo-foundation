@@ -1,70 +1,49 @@
 # Pamela Teffo Foundation
 
-Production website for the **Pamela Teffo Foundation**, a Johannesburg-based community foundation with the tagline **“Our pride is our people.”**
-
-This repository is a clean rebuild. It does not depend on the previous Lovable implementation.
-
-## Content integrity
-
-This project is intentionally strict about factual claims. Real supplied foundation media is used throughout the site. No AI-generated beneficiary imagery is used.
+Official website rebuild for the Pamela Teffo Foundation, a South African community foundation based in Mondeor, Johannesburg.
 
 > Never publish unverified impact statistics, testimonials, contact details, partnerships, financial information or organisational claims.
 
-If information is not verified, omit it or present a clearly labelled “awaiting verified information” state.
-
-## Verified organisation details currently used
-
-- **Name:** Pamela Teffo Foundation
-- **Tagline:** Our pride is our people.
-- **Registration:** 2025 / 683667 / 08
-- **Location:** Unit 27 Lake Mondeor, 49 John Masefield Drive, Mondeor, Johannesburg, South Africa
-
-Phone, email, social URLs, donation details, tax status, banking details, impact metrics, sponsor claims and partner claims are intentionally absent until verified.
+This project deliberately prioritises authenticity, dignity, accessibility and factual integrity. Genuine foundation media is used as the visual source of truth; AI-generated beneficiary imagery is not permitted.
 
 ## Stack
 
-- React 18
+- React
 - Vite
 - TypeScript
 - Tailwind CSS
-- Semantic HTML and custom CSS
+- Semantic HTML
 - GitHub Actions
-- Cloudflare Pages-ready static deployment
-
-There is no backend because the current requirements do not justify one.
+- Cloudflare Pages-ready deployment
 
 ## Local setup
 
 ```bash
-npm ci
+npm install
 npm run dev
 ```
 
-Open the local Vite URL shown in your terminal.
-
-## Available commands
+Production checks:
 
 ```bash
-npm run dev          # local development
-npm run lint         # ESLint
-npm run typecheck    # TypeScript checks
-npm run build        # production build
-npm run preview      # preview the production build
-npm run format       # run Prettier
-npm run format:check # verify formatting
+npm run lint
+npm run typecheck
+npm run build
 ```
 
 ## Project structure
 
 ```text
-public/
-  media/             # optimised, genuine supplied photos and selected footage
 src/
+  assets/
+    images/
+    video/
   components/
     layout/
+    navigation/
     sections/
     ui/
-  data/              # verified organisation data
+  data/
   hooks/
   lib/
   pages/
@@ -105,57 +84,69 @@ Example:
 VITE_SITE_URL=https://example.org npm run build
 ```
 
-This prevents an unapproved preview URL from being treated as the permanent canonical domain.
+## Git workflow
 
-## Cloudflare Pages preview workflow
+Development work should happen on feature branches and be merged through pull requests only after CI passes and the review preview is approved.
 
-Recommended workflow:
-
-```text
-feature branch
-  → GitHub PR
-  → Cloudflare Pages preview deployment
-  → owner review
-  → feedback and updates
-  → approval
-  → merge to main
-```
-
-Suggested Cloudflare Pages settings:
-
-- Framework preset: **Vite**
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Node.js: **22**
-- Production branch: `main`
-- Preview deployments: enabled for non-production branches / pull requests
-- Custom domain: do not attach until owner approval
-
-`public/_redirects` includes an SPA fallback so section navigation and future client-side routes remain deployable on Pages.
-
-## CI
-
-`.github/workflows/ci.yml` validates pushes and PRs with:
+Current rebuild branch:
 
 ```text
-npm ci
-npm run lint
-npm run typecheck
-npm run build
+feature/foundation-rebuild
 ```
 
-The first feature-branch run bootstraps and commits `package-lock.json` if this repository was created from an environment without npm registry access. Subsequent runs use `npm ci` exclusively.
+## Cloudflare Pages
 
-## Production deployment
+The project is prepared for Cloudflare Pages.
 
-1. Obtain owner approval on the Cloudflare preview.
-2. Verify final legal/contact/payment information separately.
-3. Ensure CI is green.
-4. Merge the approved PR to `main`.
-5. Let Cloudflare Pages deploy `main`.
-6. Perform a final desktop/mobile/accessibility smoke test.
-7. Attach the approved custom domain only when the foundation owner is ready.
+Recommended configuration:
 
-## Privacy and dignity
+```text
+Framework preset: Vite
+Build command: npm run build
+Build output directory: dist
+Production branch: main
+```
 
-The website contains photographs of real people, including learners. Treat these assets as sensitive community media. Do not reuse them outside the foundation project, and remove any image promptly if the foundation requests it.
+Preview deployments should be enabled for pull requests and feature branches. The production domain must not be attached until the foundation owner approves the review deployment.
+
+## Content integrity
+
+The website must never invent or imply:
+
+- beneficiary counts;
+- donation totals;
+- impact metrics;
+- founding dates;
+- awards;
+- sponsors or partnerships;
+- audited reports;
+- tax status;
+- testimonials;
+- bank details;
+- phone numbers;
+- email addresses;
+- social media accounts;
+- formal programmes not verified by the foundation.
+
+When verified information is unavailable, omit it or keep the relevant data field unset until it is confirmed.
+
+## Current verified identity information
+
+- Pamela Teffo Foundation
+- Tagline: Our pride is our people.
+- Registration number: 2025 / 683667 / 08
+- Unit 27 Lake Mondeor, 49 John Masefield Drive, Mondeor, Johannesburg, South Africa
+
+## Owner review checklist
+
+Before merging the first release, review the Cloudflare Pages preview on both mobile and desktop and confirm:
+
+- all visible people imagery comes from approved genuine foundation media;
+- names, registration number and physical address are correct;
+- no unverified phone, email, banking, social, partnership, testimonial or impact claims are visible;
+- hero crop and mobile image crops are respectful and readable;
+- video content is appropriate for public publication;
+- Get Involved wording accurately reflects how the foundation wants prospective supporters to engage;
+- the site is approved for public release.
+
+Only after the preview is approved should the PR be merged to `main` and a production domain be attached.
