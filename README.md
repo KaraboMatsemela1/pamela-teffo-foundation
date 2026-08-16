@@ -57,10 +57,9 @@ npm run format:check # verify formatting
 ## Project structure
 
 ```text
+public/
+  media/             # optimised, genuine supplied photos and selected footage
 src/
-  assets/
-    images/          # optimised, genuine supplied photography
-    video/           # selected web-optimised supplied footage
   components/
     layout/
     sections/
