@@ -1,0 +1,105 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition-property: opacity, transform;
+  transition-duration: .58s;
+  transition-timing-function: cubic-bezier(.22, .61, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+.hero-copy.reveal {
+  transform: translate3d(0, 22px, 0);
+}
+
+.hero-copy.reveal.is-visible {
+  transform: none;
+}
+
+.registration-wrap.reveal {
+  transform: translate3d(0, 20px, 0) scale(.985);
+}
+
+.registration-wrap.reveal.is-visible {
+  transform: none;
+}
+
+.interactive-card {
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(24, 37, 28, .07);
+  border-color: #ded5c7;
+}
+
+.pill:active,
+.involved-grid button:active,
+.map-link:active {
+  transform: translateY(0) scale(.98);
+}
+
+.modal {
+  animation: ptf-overlay-in .2s ease both;
+}
+
+.modal__card {
+  animation: ptf-dialog-in .25s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+@keyframes ptf-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ptf-dialog-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  .interactive-card:hover,
+  .pill:active,
+  .involved-grid button:active,
+  .map-link:active {
+    transform: none !important;
+  }
+}
