@@ -1,0 +1,62 @@
+name: Enhance outreach video
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/foundation-rebuild
+    paths:
+      - .github/workflows/enhance-outreach-video.yml
+
+permissions:
+  contents: write
+
+jobs:
+  enhance-video:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/foundation-rebuild
+          fetch-depth: 0
+
+      - name: Verify ffmpeg
+        run: ffmpeg -version
+
+      - name: Improve playback encode
+        run: |
+          mkdir -p /tmp/ptf-video
+          ffmpeg -y \
+            -i public/media/learner-footwear-support.mp4 \
+            -vf "scale=288:516:flags=lanczos,hqdn3d=1.2:1.2:4:4,minterpolate=fps=24:mi_mode=blend,unsharp=5:5:0.35:5:5:0.0" \
+            -c:v libx264 \
+            -preset slow \
+            -crf 23 \
+            -pix_fmt yuv420p \
+            -an \
+            -movflags +faststart \
+            /tmp/ptf-video/learner-footwear-support.mp4
+          mv /tmp/ptf-video/learner-footwear-support.mp4 public/media/learner-footwear-support.mp4
+
+      - name: Validate video
+        run: |
+          ffprobe -v error \
+            -select_streams v:0 \
+            -show_entries stream=width,height,r_frame_rate \
+            -show_entries format=duration,size \
+            -of default=noprint_wrappers=1 \
+            public/media/learner-footwear-support.mp4
+
+      - name: Commit enhanced video
+        run: |
+          if git diff --quiet -- public/media/learner-footwear-support.mp4; then
+            echo "Video already uses the enhanced encode."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/media/learner-footwear-support.mp4
+          git commit -m "fix: improve outreach video playback quality"
+          git push origin HEAD:feature/foundation-rebuild
