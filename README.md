@@ -36,4 +36,8 @@ The review deployment is available at `https://pamela-teffo-foundation.pages.dev
 
 Use only genuine foundation-provided media. Do not generate or substitute AI-created beneficiaries or community members. Do not publish names, contact information or other personal details unless specifically verified and approved.
 
-The review site intentionally uses an image-only Gallery. All six supplied images are presented in a horizontal, swipeable carousel with desktop arrow controls and a navigable lightbox. Video has been removed from the site and from the deployed media assets.
+The review site currently uses an image-only Gallery. All six supplied image assets are presented in a horizontal, swipeable carousel with lightbox navigation; outreach video has intentionally been removed.
+
+### Current review note
+
+The first image-carousel commit contained a corrupted `src/App.tsx` blob and was rejected by both CI and Cloudflare. The source was rebuilt from the last known-good deployment and repaired in commit `b25cdc0` while preserving the six-image carousel behavior.
