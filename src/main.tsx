@@ -5,6 +5,7 @@ import { applyRuntimeSeo } from './lib/seo'
 import './styles/index.css'
 import './styles/gallery-carousel.css'
 import './styles/polish.css'
+import './styles/profile-content.css'
 
 applyRuntimeSeo()
 
