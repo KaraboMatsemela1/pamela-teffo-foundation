@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { site } from './data/site'
 
+const dialogFocusable = 'a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'
+
 function BankIcon() {
   return (
-    <svg className="donation-bank-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M3 10h18M5 10v8m4-8v8m6-8v8m4-8v8M3 18h18M2 6l10-4 10 4v2H2V6Z" />
     </svg>
   )
@@ -19,30 +21,77 @@ function CopyIcon() {
   )
 }
 
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  )
+}
+
 export default function DonationPortal() {
-  const [host, setHost] = useState<HTMLElement | null>(null)
+  const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const previousFocus = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    const contact = document.getElementById('contact')
-    if (!contact?.parentElement) return
+    const interceptDonationCard = (event: MouseEvent) => {
+      const target = event.target instanceof Element ? event.target : null
+      const button = target?.closest<HTMLButtonElement>('.involved-grid li button')
+      if (!button) return
 
-    let section = document.getElementById('donate')
-    let created = false
+      const card = button.closest('li')
+      const title = card?.querySelector('h3')?.textContent?.trim()
+      if (title !== 'Donate essentials') return
 
-    if (!section) {
-      section = document.createElement('section')
-      section.id = 'donate'
-      section.className = 'donation-section section-border'
-      contact.parentElement.insertBefore(section, contact)
-      created = true
+      event.preventDefault()
+      event.stopPropagation()
+      event.stopImmediatePropagation()
+      setOpen(true)
     }
 
-    setHost(section)
-    return () => {
-      if (created) section?.remove()
-    }
+    document.addEventListener('click', interceptDonationCard, true)
+    return () => document.removeEventListener('click', interceptDonationCard, true)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+
+    previousFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const timer = window.setTimeout(() => dialogRef.current?.querySelector<HTMLElement>('button')?.focus(), 0)
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setOpen(false)
+        return
+      }
+      if (event.key !== 'Tab') return
+
+      const elements = Array.from(dialogRef.current?.querySelectorAll<HTMLElement>(dialogFocusable) ?? [])
+      if (!elements.length) return
+      const first = elements[0]
+      const last = elements[elements.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      window.clearTimeout(timer)
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousOverflow
+      previousFocus.current?.focus()
+    }
+  }, [open])
 
   const copyAccountNumber = async () => {
     try {
@@ -61,51 +110,62 @@ export default function DonationPortal() {
     window.setTimeout(() => setCopied(false), 1800)
   }
 
-  if (!host) return null
+  if (!open) return null
 
   return createPortal(
-    <div className="shell section-pad donation-shell">
-      <div className="donation-heading">
-        <p className="eyebrow eyebrow--gold">Donate</p>
-        <h2>Every contribution can make a difference.</h2>
-        <p>
-          Financial contributions help the foundation respond to practical needs and continue its community outreach.
-          Contributions from {site.donation.minimumContribution} are welcome.
-        </p>
-      </div>
+    <div className="donation-modal" role="presentation" onMouseDown={(event) => {
+      if (event.target === event.currentTarget) setOpen(false)
+    }}>
+      <div className="donation-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="donation-dialog-title">
+        <button type="button" className="donation-dialog__close" onClick={() => setOpen(false)} aria-label="Close donation options">
+          <CloseIcon />
+        </button>
 
-      <article className="donation-card" aria-labelledby="banking-details-heading">
-        <div className="donation-card__title">
-          <BankIcon />
-          <h3 id="banking-details-heading">Banking details</h3>
+        <div className="donation-dialog__heading">
+          <p className="eyebrow">Support the foundation</p>
+          <h2 id="donation-dialog-title">Ways to donate</h2>
+          <p>Choose the option that works best for you. Every contribution helps the foundation respond to practical community needs.</p>
         </div>
-        <dl className="donation-details">
-          <div>
-            <dt>Bank</dt>
-            <dd>{site.donation.bank}</dd>
-          </div>
-          <div>
-            <dt>Account holder</dt>
-            <dd>{site.donation.accountHolder}</dd>
-          </div>
-          <div>
-            <dt>Account number</dt>
-            <dd>
-              <span className="donation-account-number">{site.donation.accountNumber}</span>
-              <button type="button" className="copy-account-button" onClick={copyAccountNumber} aria-label="Copy donation account number">
-                <CopyIcon />
-                <span>{copied ? 'Copied' : 'Copy'}</span>
-              </button>
-            </dd>
-          </div>
-        </dl>
-        <p className="copy-status" role="status" aria-live="polite">{copied ? 'Account number copied to clipboard.' : ''}</p>
-      </article>
 
-      <p className="donation-note">
-        Thank you for supporting the Pamela Teffo Foundation and the communities it serves.
-      </p>
+        <div className="donation-options">
+          <section className="donation-option donation-option--essentials" aria-labelledby="donate-essentials-title">
+            <span className="donation-option__label">Essential items</span>
+            <h3 id="donate-essentials-title">Donate essentials</h3>
+            <p>Current priority items include:</p>
+            <ul className="donation-needs">
+              {site.currentNeeds.map((need) => <li key={need.title}>{need.title}</li>)}
+            </ul>
+            <div className="donation-contact-actions">
+              <a href={`tel:${site.phone.href}`}>Call {site.phone.display}</a>
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent('Donate essentials enquiry')}`}>Email to arrange</a>
+            </div>
+          </section>
+
+          <section className="donation-option donation-option--bank" aria-labelledby="bank-transfer-title">
+            <div className="donation-option__bank-heading">
+              <BankIcon />
+              <span className="donation-option__label">Bank transfer</span>
+            </div>
+            <h3 id="bank-transfer-title">Make a financial contribution</h3>
+            <dl className="donation-details">
+              <div><dt>Bank</dt><dd>{site.donation.bank}</dd></div>
+              <div><dt>Account holder</dt><dd>{site.donation.accountHolder}</dd></div>
+              <div className="donation-details__account">
+                <dt>Account number</dt>
+                <dd>
+                  <span>{site.donation.accountNumber}</span>
+                  <button type="button" className="copy-account-button" onClick={copyAccountNumber}>
+                    <CopyIcon /> {copied ? 'Copied' : 'Copy'}
+                  </button>
+                </dd>
+              </div>
+            </dl>
+            <p className="donation-minimum">Contributions from <strong>{site.donation.minimumContribution}</strong> are welcome.</p>
+            <p className="copy-status" role="status" aria-live="polite">{copied ? 'Account number copied to clipboard.' : ''}</p>
+          </section>
+        </div>
+      </div>
     </div>,
-    host,
+    document.body,
   )
 }
