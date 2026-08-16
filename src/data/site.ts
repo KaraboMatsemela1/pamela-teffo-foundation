@@ -62,6 +62,5 @@ export const navigation = [
   { label: 'Our Work', href: '#work' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Get Involved', href: '#get-involved' },
-  { label: 'Donate', href: '#donate' },
   { label: 'Contact', href: '#contact' },
 ] as const
